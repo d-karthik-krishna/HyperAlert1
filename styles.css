@@ -1,0 +1,120 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffffff;
+  color: #1e293b;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.dark body {
+  background-color: #020617;
+  color: #f1f5f9;
+}
+
+/* Soft Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent; 
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1; 
+  border-radius: 10px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8; 
+}
+
+/* Leaflet Overrides */
+.leaflet-container {
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  font-family: inherit;
+  background: #e2e8f0 !important;
+}
+
+.dark .leaflet-container {
+  background: #1e293b !important;
+}
+
+.leaflet-popup-content-wrapper {
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+  padding: 0;
+  border: none;
+}
+
+.dark .leaflet-popup-content-wrapper,
+.dark .leaflet-popup-tip {
+  background-color: #1e293b;
+  color: #f1f5f9;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+.leaflet-popup-content {
+  margin: 0;
+  width: 280px !important;
+}
+
+/* Emergency Animations */
+@keyframes flash-urgent {
+  0%, 100% { opacity: 1; box-shadow: inset 0 0 0 0px rgba(239, 68, 68, 0); }
+  50% { opacity: 1; box-shadow: inset 0 0 50px 10px rgba(239, 68, 68, 0.5); }
+}
+
+.animate-urgent-flash {
+  animation: flash-urgent 1s infinite ease-in-out;
+}
+
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 0.5; }
+  100% { transform: scale(2.5); opacity: 0; }
+}
+
+.marker-pulse-ring::before {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  width: 100%; height: 100%;
+  border-radius: 50%;
+  background-color: inherit;
+  z-index: -1;
+  animation: pulse-ring 1.5s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+/* Emergency Stripe Background */
+.bg-stripe-danger {
+  background-image: repeating-linear-gradient(
+    45deg,
+    #ef4444,
+    #ef4444 10px,
+    #b91c1c 10px,
+    #b91c1c 20px
+  );
+}
+
+.bg-stripe-safe {
+  background-image: repeating-linear-gradient(
+    45deg,
+    #10b981,
+    #10b981 10px,
+    #059669 10px,
+    #059669 20px
+  );
+}

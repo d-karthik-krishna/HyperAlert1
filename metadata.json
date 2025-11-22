@@ -1,0 +1,7 @@
+{
+  "name": "Copy of HyperAlert",
+  "description": "Hyperlocal, predictive disaster alerts for street-level safety.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

@@ -14,20 +14,20 @@ export default defineConfig(({ mode }) => {
     plugins: [react()],
     define: {
       'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
+      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY),
     },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),
-      }
+      },
     },
     build: {
-      outDir: 'build',
-      emptyOutDir: true
+      outDir: 'build',        // ← changed from default “dist” to “build”
+      emptyOutDir: true       // optional: clears old output before build
     },
     preview: {
       host: true,
       port: Number(process.env.PORT) || 4173
     }
-  }
+  };
 });
